@@ -2,6 +2,7 @@ package com.example.countryname
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateContentSize
@@ -17,7 +18,6 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CountryNameTheme {
+            CountryNameTheme() {
                 MyApp()
             }
         }
@@ -92,8 +92,8 @@ fun CountryCardContent(name: String) {
         .padding(12.dp)
         .animateContentSize(
             animationSpec = tween(
-                durationMillis = 30,
-                delayMillis = 10,
+                durationMillis = 100,
+                delayMillis = 50,
                 easing = LinearEasing
             )
         )
@@ -138,6 +138,14 @@ fun CountryCardContent(name: String) {
     uiMode = UI_MODE_NIGHT_YES,
     name = "PreviewDark"
 )
+
+@Preview(showBackground = true, widthDp = 320)
+@Composable
+fun aa() {
+    CountryNameTheme {
+        CountryNames()
+    }
+}
 
 @Preview(showBackground = true, widthDp = 320, heightDp = 200)
 @Composable

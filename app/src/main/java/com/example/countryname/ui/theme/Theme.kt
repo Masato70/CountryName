@@ -11,7 +11,7 @@ private val DarkColorPalette = darkColors(
     primary = Navy,
     onPrimary = Chartreuse,
     surface = Color.Black
-    )
+)
 
 
 private val LightColorPalette = lightColors(
