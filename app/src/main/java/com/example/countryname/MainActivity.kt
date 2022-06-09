@@ -40,7 +40,7 @@ fun MyApp() {
     var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
 
     if (shouldShowOnboarding) {
-        FirstScreen(onContinueClicked = { shouldShowOnboarding = false})
+        FirstScreen(onContinueClicked = { shouldShowOnboarding = false })
     } else {
         CountryNames()
     }
@@ -56,7 +56,7 @@ fun FirstScreen(onContinueClicked: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "ようこそ！")
-            Button(onClick = onContinueClicked ) {
+            Button(onClick = onContinueClicked) {
                 Text(text = "進める")
             }
         }
@@ -64,21 +64,26 @@ fun FirstScreen(onContinueClicked: () -> Unit) {
 }
 
 @Composable
-fun CountryNames(names: List<String> = listOf("アメリカ", "イギリス", "イタリア", "日本", "韓国")) {
-    LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
-        items(items = names) { name ->
-            CountryNamesCard(name)
+fun CountryNames(names: List<String> = listOf("アメリカ", "イギリス", "イタリア", "日本", "韓国", "中国")) {
+    Surface {
+        LazyColumn(modifier = Modifier.padding(vertical = 2.dp)) {
+            items(items = names) { name ->
+                CountryNamesCard(name)
+            }
         }
     }
 }
 
 @Composable
 fun CountryNamesCard(name: String) {
-    Card(
-        backgroundColor = MaterialTheme.colors.primary,
-        modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-    ) {
-        CountryCardContent(name)
+    Surface {
+        Card(
+            backgroundColor = MaterialTheme.colors.primary,
+            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+        ) {
+            CountryCardContent(name)
+        }
+
     }
 }
 
@@ -87,61 +92,65 @@ fun CountryCardContent(name: String) {
 
     var expanded by remember { mutableStateOf(false) }
 
-
-    Row(modifier = Modifier
-        .padding(12.dp)
-        .animateContentSize(
-            animationSpec = tween(
-                durationMillis = 100,
-                delayMillis = 50,
-                easing = LinearEasing
-            )
-        )
-    ) {
-
-        Column(modifier = Modifier
-            .padding(12.dp)
-            .weight(1f)
-        ) {
-            Text(
-                name,
-                style = MaterialTheme.typography.h5.copy(
-                    fontWeight = FontWeight.ExtraBold
-                ))
-
-            if (expanded) {
-                Text(
-                    text = "国名です",
-                    fontSize = 14.sp,
-                    modifier = Modifier.padding(vertical = 10.dp)
+    Surface {
+        Row(
+            modifier = Modifier
+                .padding(12.dp)
+                .animateContentSize(
+                    animationSpec = tween(
+                        durationMillis = 100,
+                        delayMillis = 50,
+                        easing = LinearEasing
                     )
+                )
+        ) {
+
+            Column(
+                modifier = Modifier
+                    .padding(12.dp)
+                    .weight(1f)
+            ) {
+                Text(
+                    name,
+                    style = MaterialTheme.typography.h5.copy(
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                )
+
+                if (expanded) {
+                    Text(
+                        text = "国名です",
+                        fontSize = 14.sp,
+                        modifier = Modifier.padding(vertical = 10.dp)
+                    )
+                }
             }
-        }
 
-        Button(onClick = { expanded = !expanded},) {
-            Icon(
-                Icons.Filled.Add,
-                contentDescription = null,
-                modifier = Modifier.size(ButtonDefaults.IconSize)
+            Button(onClick = { expanded = !expanded }) {
+                Icon(
+                    Icons.Filled.Add,
+                    contentDescription = null,
+                    modifier = Modifier.size(ButtonDefaults.IconSize)
 
-            )
-            if (!expanded) Text(text = "説明を見る") else Text(text = "説明を閉じる")
+                )
+                if (!expanded) Text(text = "説明を見る") else Text(text = "説明を閉じる")
+
+            }
         }
     }
 }
-
 
 
 @Preview(
     showBackground = true,
     widthDp = 320,
     uiMode = UI_MODE_NIGHT_YES,
-    name = "PreviewDark"
+    name = "Dark_Mode"
 )
 
 @Preview(showBackground = true, widthDp = 320)
 @Composable
-fun aa() {
+fun Light_Mode() {
     CountryNameTheme {
         CountryNames()
     }
