@@ -63,7 +63,7 @@ fun FirstScreen(onContinueClicked: () -> Unit) {
 }
 
 @Composable
-fun CountryNames(names: List<String> = listOf("アメリカ", "イギリス", "イタリア", "日本", "韓国", "中国")) {
+fun CountryNames(names: List<String> = listOf("アメリカ", "イギリス", "イタリア", "日本", "韓国", "中国", "エジプト", "ドバイ", "タイ", "韓国")) {
     Surface {
         LazyColumn(modifier = Modifier.padding(vertical = 2.dp)) {
             items(items = names) { name ->
