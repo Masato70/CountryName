@@ -44,7 +44,6 @@ fun MyApp() {
     } else {
         CountryNames()
     }
-
 }
 
 @Composable
