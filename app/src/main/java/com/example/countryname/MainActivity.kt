@@ -75,15 +75,14 @@ fun CountryNames(names: List<String> = listOf("アメリカ", "イギリス", "�
 
 @Composable
 fun CountryNamesCard(name: String) {
-    Surface {
-        Card(
-            backgroundColor = MaterialTheme.colors.primary,
-            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
-        ) {
-            CountryCardContent(name)
-        }
-
+    Card(
+        backgroundColor = MaterialTheme.colors.primary,
+        modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+    ) {
+        CountryCardContent(name)
     }
+
+
 }
 
 @Composable
